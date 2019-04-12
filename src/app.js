@@ -11,6 +11,7 @@ const cwd = process.cwd();
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
+const Q = require('@nmq/q/client')
 
 // Esoteric Resources
 const errorHandler = require( `${cwd}/src/middleware/500.js`);

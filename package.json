@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/401-advanced-javascript-v/lab-19-api-server#readme",
   "dependencies": {
+    "@nmq/q": "^1.0.3",
     "express": "^4.16.4"
   }
 }

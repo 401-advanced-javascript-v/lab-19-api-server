@@ -18,6 +18,7 @@ class Model {
    */
   get(_id) {
     let queryObject = _id ? {_id} : {};
+    Q.publish('db', 'get', {action:'get', collection:this.schema.modelName,id:_id});
     return this.schema.find(queryObject);
   }
   
@@ -27,6 +28,7 @@ class Model {
    */
   post(record) {
     let newRecord = new this.schema(record);
+    Q.pablish('db', 'create', {action:'create', collection:this.schema.modelName,id:newRecord.id});
     return newRecord.save();
   }
 
@@ -36,6 +38,7 @@ class Model {
    * @param {*} record 
    */
   put(_id, record) {
+    Q.publish('db', 'update', {action:'update', collection:this.schema.modelName,id:_id});
     return this.schema.findByIdAndUpdate(_id, record, {new:true});
   }
 
@@ -44,6 +47,7 @@ class Model {
    * @param {*} _id 
    */
   delete(_id) {
+    Q.publish('db', 'delete', {action:'delete', collection:this.schema.modelName,id:_id});
     return this.schema.findByIdAndDelete(_id);
   }
 
